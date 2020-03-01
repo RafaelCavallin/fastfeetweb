@@ -1,4 +1,5 @@
 import React from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -8,15 +9,17 @@ import Routes from './routes';
 import GlobalStyle from './styles/global';
 import history from './services/history';
 
-import store from './store';
+import { store, persistor } from './store';
 
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Routes history={history} />
-        <GlobalStyle />
-      </BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <BrowserRouter>
+          <Routes history={history} />
+          <GlobalStyle />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   );
 }
