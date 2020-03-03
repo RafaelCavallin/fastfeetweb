@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: rgba(0, 0, 0, 0.3);
+  background: #fff;
   mix-blend-mode: normal;
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -10,7 +10,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   height: 64px;
-  max-width: 900px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -21,8 +21,15 @@ export const Content = styled.div`
     align-items: center;
 
     img {
+      width: 200px;
       margin-right: 20px;
       padding-right: 20px;
+    }
+
+    a {
+      margin-right: 15px;
+      font-weight: bold;
+      color: #717171;
     }
   }
 
@@ -44,22 +51,14 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: #fff;
+      color: #717171;
     }
 
     a {
       display: block;
       margin-top: 2px;
       font-size: 12px;
-      color: #999;
+      color: #e61919;
     }
-  }
-
-  > button {
-    height: 42px;
-    width: 71px;
-    border: 0;
-    background: #d44059;
-    border-radius: 4px;
   }
 `;

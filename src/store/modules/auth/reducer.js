@@ -25,7 +25,7 @@ export default function auth(state = INITIAL_STATE, action) {
         break;
       }
 
-      case '@auth/SIGN_IN_FAILURE': {
+      case '@auth/SIGN_FAILURE': {
         // eslint-disable-next-line no-param-reassign
         draft.loading = false;
         break;

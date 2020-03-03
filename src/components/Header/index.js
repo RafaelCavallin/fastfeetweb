@@ -10,17 +10,21 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <Link to="/dashboard">
-            <img src={logo} alt="Meetup" />
+          <Link to="/orders">
+            <img src={logo} alt="Fast Feet" />
           </Link>
+          <Link to="/orders">ENCOMENDAS</Link>
+          <Link to="/deliveryman">ENTREGADORES</Link>
+          <Link to="/deliveryman">DESTINATÁRIOS</Link>
+
+          <Link to="/deliveryman">PROBLEMAS</Link>
         </nav>
         <aside>
           <Profile>
             <div>
               <strong>Rafael Cavallin</strong>
-              <Link to="/profile">Meu perfil</Link>
+              <Link to="/profile">Sair do sistema</Link>
             </div>
-            <button type="button">Sair</button>
           </Profile>
         </aside>
       </Content>
