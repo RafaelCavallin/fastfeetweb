@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Actions from '~/components/Actions';
+
+import { getOrdersRequest } from '~/store/modules/order/actions';
 
 import { Container, Content } from './styles';
 
 export default function Orders() {
+  const orders = useSelector(state => state.orders);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getOrdersRequest());
+  }, []);
+
   return (
     <Container>
       <Content>

@@ -10,7 +10,7 @@ export const Badge = styled.button`
   position: relative;
 `;
 
-export const ActionList = styled.div`
+export const Options = styled.button`
   position: absolute;
   width: 100px;
   right: -10px;
@@ -19,7 +19,6 @@ export const ActionList = styled.div`
   border: 1px solid #dcdcdc;
   border-radius: 4px;
   padding: 5px 0;
-  /*display: ${props => (props.visible ? 'block' : 'none')}; */
 
   display: flex;
   flex-direction: column;
@@ -51,4 +50,8 @@ export const ActionList = styled.div`
       margin-left: 2px;
     }
   }
+`;
+
+export const ActionList = styled.div`
+  display: ${props => (props.visible ? 'block' : 'none')};
 `;
