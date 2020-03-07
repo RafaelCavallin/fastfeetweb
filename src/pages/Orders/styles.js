@@ -59,20 +59,14 @@ export const Content = styled.div`
     border-collapse: collapse;
 
     tr {
-      margin-top: 50px;
       border-radius: 4px;
+      height: 40px;
+      margin-bottom: 30px;
     }
 
     th {
       font-weight: bold;
-    }
-
-    td {
-      background: #fff;
-      color: #666;
-      font-size: 14px;
-      text-align: center;
-      height: 40px;
+      margin-top: 50px;
     }
   }
 `;

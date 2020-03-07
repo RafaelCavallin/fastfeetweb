@@ -3,14 +3,16 @@ import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Actions from '~/components/Actions';
+import history from '~/services/history';
+
+import LineTable from '~/components/LineTable';
 
 import { getOrdersRequest } from '~/store/modules/order/actions';
 
 import { Container, Content } from './styles';
 
 export default function Orders() {
-  const orders = useSelector(state => state.orders);
+  const orders = useSelector(state => state.order.orders);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function Orders() {
               placeholder="Buscar por encomenda"
             />
           </Form>
-          <button type="button">
+          <button type="button" onClick={() => history.push('/neworder')}>
             <MdAddCircleOutline size={25} color="#FFF" />
             <span>CADASTRAR</span>
           </button>
@@ -48,35 +50,9 @@ export default function Orders() {
             </tr>
           </thead>
           <tbody>
-            <tr className="line">
-              <td>123</td>
-              <td>Rafael Cavallin</td>
-              <td>Julia cavallin</td>
-              <td>Tapes</td>
-              <td>Rio Grande do Sul</td>
-              <td>Pendente</td>
-              <td>
-                <Actions />
-              </td>
-            </tr>
-            <tr className="line">
-              <td>123</td>
-              <td>Rafael Cavallin</td>
-              <td>Julia cavallin</td>
-              <td>Tapes</td>
-              <td>Rio Grande do Sul</td>
-              <td>Pendente</td>
-              <td>...</td>
-            </tr>
-            <tr className="line">
-              <td>123</td>
-              <td>Rafael Cavallin</td>
-              <td>Julia cavallin</td>
-              <td>Tapes</td>
-              <td>Rio Grande do Sul</td>
-              <td>Pendente</td>
-              <td> ... </td>
-            </tr>
+            {orders.map(order => (
+              <LineTable key={order.id} order={order} />
+            ))}
           </tbody>
         </table>
       </Content>
