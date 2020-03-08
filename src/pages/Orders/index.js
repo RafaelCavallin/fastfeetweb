@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import history from '~/services/history';
 
-import LineTable from '~/components/LineTable';
+import OrderTable from '~/components/OrderTable';
 
 import { getOrdersRequest } from '~/store/modules/order/actions';
 
-import { Container, Content } from './styles';
+import { Container, Content, Table } from './styles';
 
 export default function Orders() {
   const orders = useSelector(state => state.order.orders);
@@ -37,7 +37,7 @@ export default function Orders() {
             <span>CADASTRAR</span>
           </button>
         </div>
-        <table>
+        <Table>
           <thead>
             <tr>
               <th>ID</th>
@@ -51,10 +51,10 @@ export default function Orders() {
           </thead>
           <tbody>
             {orders.map(order => (
-              <LineTable key={order.id} order={order} />
+              <OrderTable key={String(order.id)} order={order} />
             ))}
           </tbody>
-        </table>
+        </Table>
       </Content>
     </Container>
   );

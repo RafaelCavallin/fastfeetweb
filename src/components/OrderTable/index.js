@@ -5,7 +5,7 @@ import Actions from '~/components/Actions';
 
 import { TR } from './styles';
 
-export default function LineTable(props) {
+export default function OrderTable(props) {
   const { order } = props;
   return (
     <TR>
@@ -22,9 +22,9 @@ export default function LineTable(props) {
   );
 }
 
-LineTable.propTypes = {
+OrderTable.propTypes = {
   order: PropTypes.string,
 };
-LineTable.defaultProps = {
+OrderTable.defaultProps = {
   order: null,
 };

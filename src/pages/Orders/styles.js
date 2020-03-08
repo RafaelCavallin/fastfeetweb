@@ -54,19 +54,19 @@ export const Content = styled.div`
       }
     }
   }
+`;
 
-  table {
-    border-collapse: collapse;
+export const Table = styled.table`
+  border-collapse: collapse;
 
-    tr {
-      border-radius: 4px;
-      height: 40px;
-      margin-bottom: 30px;
-    }
+  tr {
+    border-radius: 4px;
+    height: 40px;
+    margin-bottom: 30px;
+  }
 
-    th {
-      font-weight: bold;
-      margin-top: 50px;
-    }
+  th {
+    font-weight: bold;
+    margin-top: 50px;
   }
 `;
