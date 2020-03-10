@@ -28,7 +28,7 @@ export function* signIn({ payload }) {
   }
 }
 
-function setToken({ payload }) {
+export function setToken({ payload }) {
   // eslint-disable-next-line no-useless-return
   if (!payload) return;
 
@@ -39,7 +39,12 @@ function setToken({ payload }) {
   }
 }
 
+export function signOut() {
+  history.push('/');
+}
+
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+  takeLatest('@auth/SIGN_OUT', signOut),
 ]);

@@ -31,6 +31,14 @@ export default function auth(state = INITIAL_STATE, action) {
         break;
       }
 
+      case '@auth/SIGN_OUT': {
+        // eslint-disable-next-line no-param-reassign
+        draft.token = null;
+        // eslint-disable-next-line no-param-reassign
+        draft.signed = false;
+        break;
+      }
+
       default:
     }
   });

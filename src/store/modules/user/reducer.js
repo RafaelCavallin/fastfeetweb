@@ -5,14 +5,21 @@ const INITIAL_STATE = {
 };
 
 export default function user(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case '@auth/SIGN_IN_SUCCESS':
-      return produce(state, draft => {
+  return produce(state, draft => {
+    switch (action.type) {
+      case '@auth/SIGN_IN_SUCCESS': {
         // eslint-disable-next-line no-param-reassign
         draft.profile = action.payload.user;
-      });
+        break;
+      }
 
-    default:
-      return state;
-  }
+      case '@auth/SIGN_OUT': {
+        // eslint-disable-next-line no-param-reassign
+        draft.profile = null;
+        break;
+      }
+
+      default:
+    }
+  });
 }

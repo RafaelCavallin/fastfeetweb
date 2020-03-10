@@ -55,11 +55,13 @@ export const Profile = styled.div`
       color: #717171;
     }
 
-    a {
+    button {
       display: block;
       margin-top: 2px;
       font-size: 12px;
       color: #e61919;
+      border: none;
+      background: none;
     }
   }
 `;
