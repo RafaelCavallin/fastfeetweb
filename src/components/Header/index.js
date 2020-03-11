@@ -25,9 +25,9 @@ export default function Header() {
           </Link>
           <Link to="/orders">ENCOMENDAS</Link>
           <Link to="/deliveryman">ENTREGADORES</Link>
-          <Link to="/deliveryman">DESTINATÁRIOS</Link>
+          <Link to="/recipients">DESTINATÁRIOS</Link>
 
-          <Link to="/deliveryman">PROBLEMAS</Link>
+          <Link to="/problems">PROBLEMAS</Link>
         </nav>
         <aside>
           <Profile>
