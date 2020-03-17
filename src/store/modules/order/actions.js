@@ -10,3 +10,10 @@ export function getOrdersSuccess(orders) {
     payload: { orders },
   };
 }
+
+export function createNewOrder(product, recipientId, deliverymanId) {
+  return {
+    type: '@orders/CREATE_NEW_ORDER',
+    payload: { product, recipientId, deliverymanId },
+  };
+}

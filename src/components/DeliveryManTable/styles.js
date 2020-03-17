@@ -14,5 +14,12 @@ export const TR = styled.tr`
     color: #666;
     font-size: 14px;
     text-align: center;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-top: 3px;
+    }
   }
 `;

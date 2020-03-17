@@ -68,5 +68,6 @@ export const Table = styled.table`
   th {
     font-weight: bold;
     margin-top: 50px;
+    text-align: start;
   }
 `;

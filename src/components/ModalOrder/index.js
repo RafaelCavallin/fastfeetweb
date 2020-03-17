@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Modal from '../UI/Modal/Modal';
+
 import { Container } from './styles';
 
-export default function ModalOrder(props) {
-  return <Container>{props.children}</Container>;
+export default function ModalOrder() {
+  return <Container />;
 }

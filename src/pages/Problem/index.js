@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getProblemsRequest } from '~/store/modules/problem/actions';
+
+import ProblemTable from '~/components/ProblemTable';
 
 import { Container, Content, Table } from './styles';
 
 export default function Problem() {
+  const problems = useSelector(state => state.problem.problems);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProblemsRequest());
+  }, []);
+  console.tron.log(problems);
   return (
     <Container>
       <Content>
@@ -16,15 +28,9 @@ export default function Problem() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>#123</td>
-              <td>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-                corrupti iure inventore, cumque atque sed eius voluptate
-                incidunt velit aut?
-              </td>
-              <td>...</td>
-            </tr>
+            {problems.map(problem => (
+              <ProblemTable key={String(problem.id)} problem={problem} />
+            ))}
           </tbody>
         </Table>
       </Content>

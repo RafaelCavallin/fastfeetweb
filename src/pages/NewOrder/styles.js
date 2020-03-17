@@ -60,7 +60,7 @@ export const Content = styled.div`
     input {
       background: #fff;
       box-shadow: none; /* box-shadow não está funcionando. PQ??? */
-      border: 1 solid #999;
+      border: 1px solid #999;
       border-radius: 5px;
       height: 30px;
       padding: 5px 10px;

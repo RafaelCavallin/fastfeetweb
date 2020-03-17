@@ -10,3 +10,18 @@ export function getRecipientsSuccess(recipients) {
     payload: { recipients },
   };
 }
+
+export function createNewRecipient(
+  name,
+  street,
+  number,
+  complement,
+  city,
+  state,
+  zipcode
+) {
+  return {
+    type: '@recipients/CREATE_NEW_RECIPIENT',
+    payload: { name, street, number, complement, city, state, zipcode },
+  };
+}

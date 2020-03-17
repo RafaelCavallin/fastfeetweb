@@ -66,6 +66,12 @@ export const Content = styled.div`
       color: #999;
       margin: 0 0 10px;
     }
+
+    .avatar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
   }
 `;
 

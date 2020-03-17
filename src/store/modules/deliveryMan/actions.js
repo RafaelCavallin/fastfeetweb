@@ -10,3 +10,10 @@ export function getDeliveyManSuccess(deliveryMen) {
     payload: { deliveryMen },
   };
 }
+
+export function createNewDeliveryman(name, avatarId, email) {
+  return {
+    type: '@deliveryMan/CREATE_NEW_DELIVERYMAN',
+    payload: { name, avatarId, email },
+  };
+}

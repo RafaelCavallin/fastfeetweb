@@ -10,6 +10,7 @@ import NewOrder from '../pages/NewOrder';
 import Recipient from '../pages/Recipient';
 import NewRecipient from '../pages/NewRecipient';
 import Problem from '../pages/Problem';
+import NewDeliveryman from '../pages/NewDeliveryman';
 
 export default function Routes() {
   return (
@@ -21,6 +22,7 @@ export default function Routes() {
       <Route path="/recipients" component={Recipient} isPrivate />
       <Route path="/newrecipient" component={NewRecipient} isPrivate />
       <Route path="/problems" component={Problem} isPrivate />
+      <Route path="/newdeliveryman" component={NewDeliveryman} isPrivate />
     </Switch>
   );
 }

@@ -16,7 +16,7 @@ export default function OrderTable(props) {
       <td>{order.recipient.state}</td>
       <td>Pendente</td>
       <td>
-        <Actions />
+        <Actions order={order} />
       </td>
     </TR>
   );

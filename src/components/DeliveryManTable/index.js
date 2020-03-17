@@ -7,7 +7,6 @@ import { TR } from './styles';
 
 export default function DeliveryManTable(props) {
   const { deliveryMan } = props;
-
   return (
     <TR>
       <td>#{deliveryMan.id}</td>
