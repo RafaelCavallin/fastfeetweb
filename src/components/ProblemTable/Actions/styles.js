@@ -12,13 +12,14 @@ export const Badge = styled.button`
 
 export const Options = styled.button`
   position: absolute;
-  width: 100px;
-  right: -10px;
+  width: 140px;
+  right: calc(100% - 80px);
   top: 25px;
   background: #ffffff;
   border: 1px solid #dcdcdc;
   border-radius: 4px;
   padding: 5px 0;
+  z-index: 1;
 
   display: flex;
   flex-direction: column;
@@ -26,7 +27,7 @@ export const Options = styled.button`
   &::before {
     content: '';
     position: absolute;
-    left: 40px;
+    left: 60px;
     top: -10px;
     width: 0;
     height: 0;
@@ -36,9 +37,12 @@ export const Options = styled.button`
     border-bottom: 10px solid #dcdcdc;
   }
 
-  a {
+  button {
+    border: 0;
     border-bottom: 1px solid #dcdcdc;
-    padding: 5px 0;
+    width: 100%;
+    background: none;
+    padding: 8px 0;
     color: #666;
     font-size: 12px;
 

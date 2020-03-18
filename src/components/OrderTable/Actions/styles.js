@@ -19,6 +19,7 @@ export const Options = styled.button`
   border: 1px solid #dcdcdc;
   border-radius: 4px;
   padding: 5px 0;
+  z-index: 1;
 
   display: flex;
   flex-direction: column;
@@ -36,9 +37,12 @@ export const Options = styled.button`
     border-bottom: 10px solid #dcdcdc;
   }
 
-  a {
+  button {
+    border: 0;
     border-bottom: 1px solid #dcdcdc;
-    padding: 5px 0;
+    width: 100%;
+    background: none;
+    padding: 8px 0;
     color: #666;
     font-size: 12px;
 

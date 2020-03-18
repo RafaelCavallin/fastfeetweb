@@ -19,6 +19,7 @@ export const Options = styled.button`
   border: 1px solid #dcdcdc;
   border-radius: 4px;
   padding: 5px 0;
+  z-index: 1;
 
   display: flex;
   flex-direction: column;

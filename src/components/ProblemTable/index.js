@@ -12,7 +12,7 @@ export default function ProblemTable(props) {
       <td>#{problem.delivery_id}</td>
       <td>{problem.description}</td>
       <td>
-        <Actions order={problem} />
+        <Actions problem={problem} />
       </td>
     </TR>
   );

@@ -14,11 +14,10 @@ export default function Problem() {
   useEffect(() => {
     dispatch(getProblemsRequest());
   }, []);
-  console.tron.log(problems);
   return (
     <Container>
       <Content>
-        <header>Gerenciando encomendas</header>
+        <header>Gerenciando de Problemas</header>
         <Table>
           <thead>
             <tr>
