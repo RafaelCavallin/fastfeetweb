@@ -16,7 +16,7 @@ export default function DeliveryManTable(props) {
       <td>{deliveryMan.name}</td>
       <td>{deliveryMan.email}</td>
       <td>
-        <Actions />
+        <Actions deliveryMan={deliveryMan} />
       </td>
     </TR>
   );

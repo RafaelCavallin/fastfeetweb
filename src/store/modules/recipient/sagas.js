@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import api from '~/services/api';
 import history from '~/services/history';
 
-import { getRecipientsSuccess } from './actions';
+import { getRecipientsSuccess, deleteRecipientsSuccess } from './actions';
 
 export function* getAllRecipients() {
   try {
@@ -35,7 +35,20 @@ export function* createNewRecipient({ payload }) {
   }
 }
 
+export function* deleteRecipient({ payload }) {
+  const { recipient_id } = payload;
+  try {
+    yield call(api.delete, `recipients/${recipient_id}`);
+    toast.success('Destinatário excluído.');
+
+    yield put(deleteRecipientsSuccess());
+  } catch (err) {
+    toast.error('Falha ao excluir o registro.');
+  }
+}
+
 export default all([
   takeLatest('@recipients/GET_RECIPIENT_REQUEST', getAllRecipients),
   takeLatest('@recipients/CREATE_NEW_RECIPIENT', createNewRecipient),
+  takeLatest('@recipients/DELETE_RECIPIENT_REQUEST', deleteRecipient),
 ]);

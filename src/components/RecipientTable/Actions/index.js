@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { MdMoreHoriz, MdModeEdit, MdDelete } from 'react-icons/md';
+import PropTypes from 'prop-types';
+
+import { deleteRecipientsRequest } from '~/store/modules/recipient/actions';
 
 import { Container, Badge, ActionList, Options } from './styles';
 
-export default function Actions() {
+export default function Actions(props) {
+  const dispatch = useDispatch();
+
+  const { recipient } = props;
   const [visible, setVisible] = useState(false);
 
   function handleToggleVisible() {
     setVisible(!visible);
+  }
+
+  function handleDelete(recipient_id) {
+    if (window.confirm('Você tem certeza que deseja exluir o registro?')) {
+      dispatch(deleteRecipientsRequest(recipient_id));
+    }
   }
 
   return (
@@ -18,16 +30,28 @@ export default function Actions() {
       </Badge>
       <ActionList visible={visible}>
         <Options>
-          <Link to="/view">
+          <button type="button">
             <MdModeEdit color="#4D85EE" size={15} />
             <span>Editar</span>
-          </Link>
-          <Link to="/view">
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              handleDelete(recipient.id);
+            }}
+          >
             <MdDelete color="#DF4141" size={15} />
             <span>Excluir</span>
-          </Link>
+          </button>
         </Options>
       </ActionList>
     </Container>
   );
 }
+
+Actions.propTypes = {
+  recipient: PropTypes.string,
+};
+Actions.defaultProps = {
+  recipient: null,
+};

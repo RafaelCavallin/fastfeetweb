@@ -2,6 +2,35 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
+
+  .info,
+  .date,
+  .signature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+    strong {
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    p {
+      color: #666;
+    }
+
+    img {
+      justify-content: center;
+    }
+  }
+
+  .info,
+  .date {
+    border-bottom: 1px solid #999;
+  }
 `;
 
 export const Badge = styled.button`
@@ -10,7 +39,7 @@ export const Badge = styled.button`
   position: relative;
 `;
 
-export const Options = styled.button`
+export const Options = styled.div`
   position: absolute;
   width: 100px;
   right: -10px;

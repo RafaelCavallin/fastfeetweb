@@ -10,7 +10,7 @@ export const Badge = styled.button`
   position: relative;
 `;
 
-export const Options = styled.button`
+export const Options = styled.div`
   position: absolute;
   width: 140px;
   right: calc(100% - 80px);

@@ -13,7 +13,7 @@ export default function RecipientTable(props) {
       <td>{recipient.name}</td>
       <td>{recipient.street}</td>
       <td>
-        <Actions />
+        <Actions recipient={recipient} />
       </td>
     </TR>
   );

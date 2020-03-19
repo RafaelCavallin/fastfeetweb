@@ -10,10 +10,10 @@ export const Badge = styled.button`
   position: relative;
 `;
 
-export const Options = styled.button`
+export const Options = styled.div`
   position: absolute;
   width: 100px;
-  right: -10px;
+  right: calc(100% - 100px);
   top: 25px;
   background: #ffffff;
   border: 1px solid #dcdcdc;
@@ -37,9 +37,12 @@ export const Options = styled.button`
     border-bottom: 10px solid #dcdcdc;
   }
 
-  a {
+  button {
+    border: 0;
     border-bottom: 1px solid #dcdcdc;
-    padding: 5px 0;
+
+    background: none;
+    padding: 8px 0;
     color: #666;
     font-size: 12px;
 

@@ -11,6 +11,19 @@ export function getRecipientsSuccess(recipients) {
   };
 }
 
+export function deleteRecipientsRequest(recipient_id) {
+  return {
+    type: '@recipients/DELETE_RECIPIENT_REQUEST',
+    payload: { recipient_id },
+  };
+}
+
+export function deleteRecipientsSuccess() {
+  return {
+    type: '@recipients/DELETE_RECIPIENT_SUCCESS',
+  };
+}
+
 export function createNewRecipient(
   name,
   street,

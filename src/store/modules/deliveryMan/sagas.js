@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import api from '~/services/api';
 import history from '~/services/history';
 
-import { getDeliveyManSuccess } from './actions';
+import { getDeliveyManSuccess, deleteDeliveryManSuccess } from './actions';
 
 export function* getAllDeliveryMen() {
   try {
@@ -31,7 +31,21 @@ export function* createNewDeliveryMen({ payload }) {
   }
 }
 
+export function* deleteDeliveryMen({ payload }) {
+  const { deliveryMan_id } = payload;
+  try {
+    yield call(api.delete, `deliveryman/${deliveryMan_id}`);
+    toast.success('Entregador excluído.');
+    yield put(deleteDeliveryManSuccess());
+    history.push('/deliveryman');
+  } catch (err) {
+    toast.error('Falha ao excluir o registro.');
+    console.tron.log(err);
+  }
+}
+
 export default all([
   takeLatest('@deliveryMan/GET_DELIVERYMAN_REQUEST', getAllDeliveryMen),
   takeLatest('@deliveryMan/CREATE_NEW_DELIVERYMAN', createNewDeliveryMen),
+  takeLatest('@deliveryMan/DELETE_DELIVERYMAN_REQUEST', deleteDeliveryMen),
 ]);

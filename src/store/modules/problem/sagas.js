@@ -14,6 +14,18 @@ export function* getAllproblems() {
   }
 }
 
+export function* deleteOrderByProblems({ payload }) {
+  const { deliveryId } = payload;
+  try {
+    yield call(api.delete, `/problem/${deliveryId}/cancel-delivery`);
+    toast.success('Pedido cancelado com sucesso!');
+  } catch (err) {
+    toast.error('Falha ao cancelar o pedido.');
+    console.tron.log(err);
+  }
+}
+
 export default all([
   takeLatest('@problems/GET_PROBLEM_REQUEST', getAllproblems),
+  takeLatest('@problems/DELETE_ORDER_BY_PROBLEM', deleteOrderByProblems),
 ]);
