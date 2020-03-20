@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { MdMoreHoriz, MdModeEdit, MdDelete } from 'react-icons/md';
 import PropTypes from 'prop-types';
 
+import history from '~/services/history';
 import { deleteRecipientsRequest } from '~/store/modules/recipient/actions';
 
 import { Container, Badge, ActionList, Options } from './styles';
@@ -30,7 +31,12 @@ export default function Actions(props) {
       </Badge>
       <ActionList visible={visible}>
         <Options>
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => {
+              history.push(`/editrecipient/${recipient.id}`);
+            }}
+          >
             <MdModeEdit color="#4D85EE" size={15} />
             <span>Editar</span>
           </button>

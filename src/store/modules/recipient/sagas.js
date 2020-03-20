@@ -17,8 +17,7 @@ export function* getAllRecipients() {
 
 export function* createNewRecipient({ payload }) {
   try {
-    const { name, street, number, complement, city, state, zipcode } = payload;
-
+    const { name, street, number, complement, city, state, zip_code } = payload;
     yield call(api.post, 'recipients', {
       name,
       street,
@@ -26,9 +25,10 @@ export function* createNewRecipient({ payload }) {
       complement,
       city,
       state,
-      zip_code: zipcode,
+      zip_code,
     });
 
+    toast.success('Destinatário cadastrado com sucesso.');
     history.push('/recipients');
   } catch (err) {
     toast.error('Falha ao cadastrar. Verifique seus dados');
@@ -47,8 +47,39 @@ export function* deleteRecipient({ payload }) {
   }
 }
 
+export function* updateRecipient({ payload }) {
+  const {
+    id,
+    name,
+    street,
+    number,
+    complement,
+    city,
+    state,
+    zip_code,
+  } = payload;
+
+  try {
+    yield call(api.put, `recipients/${id}`, {
+      name,
+      street,
+      number,
+      complement,
+      city,
+      state,
+      zip_code,
+    });
+    toast.success('Destinatário alterado.');
+    yield put(deleteRecipientsSuccess());
+    history.push('/recipients');
+  } catch (err) {
+    toast.error('Falha ao alterar o registro.');
+  }
+}
+
 export default all([
   takeLatest('@recipients/GET_RECIPIENT_REQUEST', getAllRecipients),
   takeLatest('@recipients/CREATE_NEW_RECIPIENT', createNewRecipient),
   takeLatest('@recipients/DELETE_RECIPIENT_REQUEST', deleteRecipient),
+  takeLatest('@recipients/UPDATE_RECIPIENT_REQUEST', updateRecipient),
 ]);

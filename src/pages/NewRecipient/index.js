@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { MdDone, MdKeyboardArrowLeft } from 'react-icons/md';
 import * as Yup from 'yup';
 
 import history from '~/services/history';
+import api from '~/services/api';
 import { Container, Content, Button } from './styles';
 
-import { createNewRecipient } from '~/store/modules/recipient/actions';
+import {
+  createNewRecipient,
+  updateRecipientsRequest,
+} from '~/store/modules/recipient/actions';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
@@ -18,11 +22,22 @@ const schema = Yup.object().shape({
   state: Yup.string()
     .max(2, 'Utilize abreviatura (SP, RS, PA...)')
     .required('O estado é obrigatório'),
-  zipcode: Yup.string().required('O CEP é obrigatório'),
+  zip_code: Yup.string().required('O CEP é obrigatório'),
 });
 
-export default function NewOrder() {
+export default function NewRecipient({ match }) {
   const dispatch = useDispatch();
+  const [recipient, setRecipient] = useState();
+
+  const { id } = match.params;
+
+  useEffect(() => {
+    async function loadDeliveries() {
+      const response = await api.get(`/recipients/${id}`);
+      setRecipient(response.data);
+    }
+    loadDeliveries();
+  }, [id]);
 
   function handleSubmit({
     name,
@@ -31,11 +46,34 @@ export default function NewOrder() {
     complement,
     city,
     state,
-    zipcode,
+    zip_code,
   }) {
-    dispatch(
-      createNewRecipient(name, street, number, complement, city, state, zipcode)
-    );
+    if (id) {
+      dispatch(
+        updateRecipientsRequest(
+          id,
+          name,
+          street,
+          number,
+          complement,
+          city,
+          state,
+          zip_code
+        )
+      );
+    } else {
+      dispatch(
+        createNewRecipient(
+          name,
+          street,
+          number,
+          complement,
+          city,
+          state,
+          zip_code
+        )
+      );
+    }
   }
 
   return (
@@ -59,7 +97,12 @@ export default function NewOrder() {
             </Button>
           </div>
         </header>
-        <Form id="newRecipientForm" schema={schema} onSubmit={handleSubmit}>
+        <Form
+          id="newRecipientForm"
+          schema={schema}
+          onSubmit={handleSubmit}
+          initialData={recipient}
+        >
           <div className="line">
             <div className="group">
               <span>Nome</span>
@@ -92,7 +135,7 @@ export default function NewOrder() {
             </div>
             <div className="group">
               <span>CEP</span>
-              <Input name="zipcode" type="text" placeholder="96758-223" />
+              <Input name="zip_code" type="text" placeholder="96758-223" />
             </div>
           </div>
         </Form>

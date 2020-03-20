@@ -31,10 +31,32 @@ export function createNewRecipient(
   complement,
   city,
   state,
-  zipcode
+  zip_code
 ) {
   return {
     type: '@recipients/CREATE_NEW_RECIPIENT',
-    payload: { name, street, number, complement, city, state, zipcode },
+    payload: { name, street, number, complement, city, state, zip_code },
+  };
+}
+
+export function updateRecipientsRequest(
+  id,
+  name,
+  street,
+  number,
+  complement,
+  city,
+  state,
+  zip_code
+) {
+  return {
+    type: '@recipients/UPDATE_RECIPIENT_REQUEST',
+    payload: { id, name, street, number, complement, city, state, zip_code },
+  };
+}
+
+export function updateRecipientsSuccess() {
+  return {
+    type: '@recipients/UPDATE_RECIPIENT_SUCCESS',
   };
 }
